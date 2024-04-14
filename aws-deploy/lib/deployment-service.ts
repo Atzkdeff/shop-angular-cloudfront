@@ -1,7 +1,5 @@
 import {
   CfnOutput,
-  Stack,
-  StackProps,
   aws_s3 as s3,
   aws_cloudfront as cloudFront,
   aws_cloudfront_origins as cloudfront_origins,
@@ -12,9 +10,9 @@ import { Construct } from 'constructs';
 
 const path = './aws-deploy/resources/build'; // your web app build
 
-export class DeploymentService extends Stack {
-  constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
+export class DeploymentService extends Construct {
+  constructor(scope: Construct, id: string) {
+    super(scope, id);
 
     const hostingBucket = new s3.Bucket(this, 'FrontendBucket', {
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
@@ -35,6 +33,11 @@ export class DeploymentService extends Stack {
         errorResponses: [
           {
             httpStatus: 404,
+            responseHttpStatus: 200,
+            responsePagePath: '/index.html',
+          },
+          {
+            httpStatus: 403,
             responseHttpStatus: 200,
             responsePagePath: '/index.html',
           },
