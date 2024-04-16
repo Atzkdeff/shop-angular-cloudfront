@@ -1,5 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+*.js
+!jest.config.js
+*.d.ts
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+
+**/resources/build
+
 # compiled output
 /dist
 /tmp
