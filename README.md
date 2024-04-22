@@ -2,14 +2,13 @@
 
 Angular version: ~17.
 
-Deployed: 
+Deployed:
 
-- [link](https://d20qsq6hi30ea.cloudfront.net/)
-- [S3 bucket](https://deploywebappstackdeployment-frontendbucketefe2e19c-c5a1oefhov0f.s3.eu-north-1.amazonaws.com/index.html)
+- [link](https://d1jwk2eifnc1f5.cloudfront.net/)
 
 Repo maintainers:
 
-- [Sergey Gultyayev](https://github.com/gultyayev)
+- [Atzkdeff](https://github.com/atzkdeff)
 
 ## The purpose
 
