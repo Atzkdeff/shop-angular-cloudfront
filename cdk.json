@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts aws-deploy/bin/aws-hometask.ts",
+  "app": "npx ts-node --prefer-ts-exts aws-deploy/bin/cloudfront-deploy.ts",
   "watch": {
     "include": ["**"],
     "exclude": [
