@@ -29,10 +29,14 @@ export class ManageProductsService extends ApiService {
     fileName: string,
   ): Observable<{ key: string; uploadUrl: string }> {
     const url = this.getUrl('import', 'import');
+    const authorizationToken = localStorage.getItem('authorization_token');
 
     return this.http.get<{ key: string; uploadUrl: string }>(url, {
       params: {
         name: fileName,
+      },
+      headers: {
+        Authorization: `Basic ${authorizationToken}`,
       },
     });
   }
