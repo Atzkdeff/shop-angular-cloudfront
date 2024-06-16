@@ -1,9 +1,12 @@
 import { computed, Injectable, signal } from '@angular/core';
 
+import { Product } from '../products/product.interface';
+import { ApiService } from '../core/api.service';
+
 @Injectable({
   providedIn: 'root',
 })
-export class CartService {
+export class CartService extends ApiService {
   /** Key - item id, value - ordered amount */
   #cart = signal<Record<string, number>>({});
 
@@ -20,7 +23,18 @@ export class CartService {
   });
 
   addItem(id: string): void {
-    this.updateCount(id, 1);
+    if (!this.endpointEnabled('cart')) {
+      console.warn(
+        'Endpoint "bff" is disabled. To enable change your environment.ts config',
+      );
+      return undefined;
+    }
+
+    const url = this.getUrl('cart', '');
+
+    this.http
+      .put<Product>(url, { cartItems: [{ product_id: id, count: 42 }] })
+      .subscribe();
   }
 
   removeItem(id: string): void {
